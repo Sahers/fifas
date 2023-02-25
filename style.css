@@ -14,7 +14,6 @@ body{
 }
 input[type="number"]{
   width:26px;
-  display:inline;
   margin-top: 10px;
   margin-left: 5px;
 }
