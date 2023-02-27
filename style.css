@@ -11,6 +11,7 @@
 body{
   width: 540px;
   height:550px;
+  background-color: #00F9FF;
 }
 input[type="number"]{
   width:30px;
@@ -92,4 +93,9 @@ button{
   100%{
     opacity:0;
   }
+}
+#copyright , #author , #warning , #author-note{
+  text-align: center;
+  background-color: #FFA200;
+  color:white;
 }
