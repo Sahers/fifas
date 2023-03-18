@@ -32,6 +32,8 @@ let skill8 = document.getElementById('skill8')
 let skill9 = document.getElementById('skill9')
 let skill10 = document.getElementById('skill10')
 let skill11 = document.getElementById('skill11')
+let res = document.getElementById('box')
+let inputs = document.querySelectorAll('input')
 document.getElementById('calculate').onclick = function() {
   let mainranks = (Math.floor(+rank1.value / 5) + Math.floor((+rank2.value) / 5) + Math.floor((+rank3.value) / 5) + Math.floor((+rank4.value) / 5) + Math.floor((+rank5.value) / 5) + Math.floor((+rank6.value) / 5) + Math.floor((+rank7.value) / 5) + Math.floor((+rank8.value) / 5) + Math.floor((+rank9.value) / 5) + Math.floor((+rank10.value) / 5) + Math.floor((+rank11.value) / 5)) / 11
   let mainskills = (+skill1.value + +skill2.value + +skill3.value + +skill4.value + +skill5.value + +skill6.value + +skill7.value + +skill8.value + +skill9.value + +skill10.value + +skill11.value) / 11
@@ -49,50 +51,50 @@ document.getElementById('calculate').onclick = function() {
   ovr = Math.ceil(mainovr)
   ranks = Math.ceil(mainranks)
   skills = Math.ceil(mainskills)
-  console.log(mainskills)
-  console.log(skills)
-  if (+rank1.value == 30) {
-    rank1.value = 25
-  }
-  if (+rank2.value == 30) {
-    rank2.value = 25
-  }
-  if (+rank3.value == 30) {
-    rank3.value = 25
-  }
-  if (+rank4.value == 30) {
-    rank4.value = 25
-  }
-  if (+rank5.value == 30) {
-    rank5.value = 25
-  }
-  if (+rank6.value == 30) {
-    rank6.value = 25
-  }
-  if (+rank7.value == 30) {
-    rank7.value = 25
-  }
-  if (+rank8.value == 30) {
-    rank8.value = 25
-  }
-  if (+rank9.value == 30) {
-    rank9.value = 25
-  }
-  if (+rank10.value == 30) {
-    rank10.value = 25
-  }
-  if (+rank11.value == 30) {
-    rank11.value = 25
-  }
   let ovrremain = Math.round(((ovr - mainovr)) * 11) + 1
   let rankremain = Math.round((ranks - mainranks) * 11) + 1
   let skillremain = Math.round((skills - mainskills) * 11) + 1
-  document.getElementById('box').innerHTML = `
-  <div id="ovr"> ${+ovr + +ranks + +skills} الاوفر الحالي هو</div>
-  <div id="a">تبقي لك ${ovrremain}اوفر علي الاوفر القادم</div>
-    <div id='b'>تبقي لك ${rankremain}رانك علي الاوفر القادم</div>
-    <div id="c">تبقي لك ${skillremain}سكيل علي الاوفر القادم</div>`
-  
+  let inps = [...inputs]
+let error = document.getElementById('error')
+for(i = 0;i < inps.length;i++){
+ if(inps[i].value == ''){
+  inps[i].style.backgroundColor = '#F44336'
+  error.innerHTML = 'هناك مكان لم يكتب فيه'
+  error.style.cssText = `
+  color:red;
+  text-align:center;
+  `
+  res.innerHTML = ''
+ }
+ else{
+  inps[i].style.backgroundColor = 'white'
+  document.getElementById('box').innerHTML = ` <div id="ovr"> ${+ovr + +ranks + +skills} الاوفر الحالي هو</div> <div id="a"> تبقي لك ${ovrremain} اوفر علي الاوفر القادم </div> <div id='b'> تبقي لك ${rankremain} رانك علي الاوفر القادم </div> <div id="c"> تبقي لك ${skillremain} سكيل علي الاوفر القادم </div>`
+ }
+}
+for(i = 11;i < 22;i++){
+  if(inps[i].value >= 25){
+    document.getElementById('b').innerHTML = 'توقف تطوير الرانكات حاليا'
+  }
+  if(inps[i].value == 30){
+    inps[i].value = 25
+  }
+  if(inps[i].value > 30){
+   document.getElementById('errorrank').innerHTML='كتبت عدد رانكات غير موجود في اللعبة'
+   res.innerHTML = ''
+  }
+  else{
+    document.getElementById('box').innerHTML =`<div id="ovr"> ${+ovr + +ranks + +skills} الاوفر الحالي هو</div> <div id="a"> تبقي لك ${ovrremain} اوفر علي الاوفر القادم </div> <div id='b'> تبقي لك ${rankremain} رانك علي الاوفر القادم </div> <div id="c"> تبقي لك ${skillremain} سكيل علي الاوفر القادم </div>`
+  }
+}
+for(i = 22;i < inps.length;i++){
+  if(inps[i].value == 20){
+  document.getElementById('c').innerHTML = 'توقف تطوير معززات المهارة حاليا'
+  }
+  if(inps[i].value > 20){
+    document.getElementById('errorskill').innerHTML = 'كتبت عدد معززات مهارة غير موجود حاليًا في اللعبة'
+  res.innerHTML = ''
+}
+}
 }
 /*function ranks(){
   for(let i = 1;i < 12;i++){
