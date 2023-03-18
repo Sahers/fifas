@@ -99,3 +99,7 @@ button{
   background-color: #FFA200;
   color:white;
 }
+#errorrank,#errorskill{
+  color: red;
+  text-align: center;
+}
