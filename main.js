@@ -72,9 +72,6 @@ for(i = 0;i < inps.length;i++){
  }
 }
 for(i = 11;i < 22;i++){
-  if(inps[i].value >= 25){
-    document.getElementById('b').innerHTML = 'توقف تطوير الرانكات حاليا'
-  }
   if(inps[i].value == 30){
     inps[i].value = 25
   }
@@ -87,14 +84,29 @@ for(i = 11;i < 22;i++){
   }
 }
 for(i = 22;i < inps.length;i++){
-  if(inps[i].value == 20){
-  document.getElementById('c').innerHTML = 'توقف تطوير معززات المهارة حاليا'
-  }
   if(inps[i].value > 20){
     document.getElementById('errorskill').innerHTML = 'كتبت عدد معززات مهارة غير موجود حاليًا في اللعبة'
   res.innerHTML = ''
 }
 }
+// ranks check //
+let m = 0;
+for(i = 11;i < 22;i++){
+  m += Math.floor(inps[i].value / 5)
+  if(m >= 45){
+    document.getElementById('b').innerHTML = 'توقف تطوير الرانكات حاليا'
+  }
+}
+// end check ranks //
+// check skills //
+let n = 0;
+for(i = 22;i < inps.length;i++){
+  n += +inps[i].value
+  if(n >= 210){
+    document.getElementById('c').innerHTML = 'توقف تطوير معززات المهارة'
+  }
+}
+// end check skills //
 }
 /*function ranks(){
   for(let i = 1;i < 12;i++){
@@ -102,22 +114,4 @@ for(i = 22;i < inps.length;i++){
       ranki.value = 25
     }
   }
-}*/
-/*
-
-+ovr1.value - (rank1.value / 5) +
-+ovr2.value - (rank2.value / 5) +
-+ovr3.value - (rank3.value / 5) +
-+ovr4.value - (rank4.value / 5) +
-+ovr5.value - (rank5.value / 5) +
-+ovr6.value - (rank6.value / 5) +
-+ovr7.value - (rank7.value / 5) +
-+ovr8.value - (rank8.value / 5) +
-+ovr9.value - (rank9.value / 5) +
-+ovr10.value - (rank10.value / 5) +
-+ovr11.value - (rank11.value / 5)
-
-
-
-
-*/
+}
