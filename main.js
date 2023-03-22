@@ -108,10 +108,3 @@ for(i = 22;i < inps.length;i++){
 }
 // end check skills //
 }
-/*function ranks(){
-  for(let i = 1;i < 12;i++){
-    if(+rank/i.value == 30){
-      ranki.value = 25
-    }
-  }
-}
