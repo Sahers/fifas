@@ -71,6 +71,7 @@ for(i = 0;i < inps.length;i++){
   error.innerHTML = 'هناك مكان لم يكتب فيه'
   error.style.cssText = `
   text-align:center;
+  color:red;
   `
   res.innerHTML = ''
  }
